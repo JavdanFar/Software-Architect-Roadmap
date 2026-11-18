@@ -1,0 +1,1141 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Software Engineer to Architect Roadmap</title>
+  <script>
+    (function () {
+      var t = null;
+      try { var r = JSON.parse(localStorage.getItem("roadmap-v11") || "{}"); t = r.th } catch (e) { }
+      if (t !== "dark" && t !== "light") {
+        t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f3f9ff;
+      --fg: #0f2742;
+      --muted: #5b7592;
+      --line: #d3e5f7;
+      --card: #ffffff;
+      --accent: #2b8ad6;
+      --accent-soft: #e1effc;
+      --tag: #e9f3fd;
+      --hover: #eef6fe
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0d1b2a;
+      --fg: #e6f1fb;
+      --muted: #8fb0cf;
+      --line: #1f3550;
+      --card: #12263b;
+      --accent: #7cc0f5;
+      --accent-soft: #183552;
+      --tag: #17314b;
+      --hover: #16304a
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.7;
+      font-size: 16px
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 20px 96px
+    }
+
+    h1 {
+      font-size: 30px;
+      line-height: 1.25;
+      margin: 0 0 8px
+    }
+
+    .lead {
+      color: var(--muted);
+      margin: 0 0 20px
+    }
+
+    .principle {
+      border-left: 3px solid var(--accent);
+      padding: 2px 16px;
+      margin: 0 0 16px;
+      color: var(--muted)
+    }
+
+    .flagship {
+      background: var(--accent-soft);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin: 0 0 20px;
+      font-size: 15px
+    }
+
+    .flagship b {
+      color: var(--accent)
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      align-items: center
+    }
+
+    .bar-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: var(--bg);
+      padding: 12px 0 10px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap
+    }
+
+    .track {
+      flex: 1;
+      min-width: 160px;
+      height: 6px;
+      background: var(--line);
+      border-radius: 3px;
+      overflow: hidden
+    }
+
+    .track i {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      transition: width .25s
+    }
+
+    .pt {
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .btns {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px
+    }
+
+    button {
+      font: inherit;
+      font-size: 13px;
+      color: var(--fg);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 3px 12px;
+      cursor: pointer
+    }
+
+    button:hover {
+      background: var(--hover)
+    }
+
+    button.on {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff
+    }
+
+    :root[data-theme="dark"] button.on {
+      color: #0d1b2a
+    }
+
+    #theme {
+      margin-left: auto
+    }
+
+    nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 8px;
+      margin-bottom: 28px
+    }
+
+    nav a {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      padding: 8px 12px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 14px
+    }
+
+    nav a:hover {
+      background: var(--hover)
+    }
+
+    nav a .n {
+      color: var(--accent);
+      font-weight: 700
+    }
+
+    nav a .p {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 12px
+    }
+
+    details.phase {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      margin-bottom: 16px
+    }
+
+    details.phase>summary {
+      cursor: pointer;
+      padding: 14px 18px;
+      font-weight: 700;
+      list-style: none;
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      border-radius: 12px
+    }
+
+    details.phase>summary:hover {
+      background: var(--hover)
+    }
+
+    summary::-webkit-details-marker {
+      display: none
+    }
+
+    summary .n {
+      color: var(--accent);
+      min-width: 22px
+    }
+
+    summary .c {
+      margin-left: auto;
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap
+    }
+
+    .pbody {
+      padding: 0 14px 16px
+    }
+
+    details.sec {
+      border-top: 1px solid var(--line);
+      padding: 2px 4px
+    }
+
+    details.sec>summary {
+      cursor: pointer;
+      padding: 10px 6px;
+      font-weight: 600;
+      font-size: 15px;
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      border-radius: 8px
+    }
+
+    details.sec>summary:hover {
+      background: var(--hover)
+    }
+
+    details.sec>summary .n {
+      font-weight: 500
+    }
+
+    .goal {
+      margin: 0 6px 8px;
+      font-size: 13.5px;
+      color: var(--muted);
+      background: var(--tag);
+      border-radius: 8px;
+      padding: 6px 12px
+    }
+
+    .goal b {
+      color: var(--accent);
+      font-weight: 600
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0 6px
+    }
+
+    li {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 3px 0;
+      border-radius: 6px
+    }
+
+    li:hover {
+      background: var(--hover)
+    }
+
+    li label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      flex: 1;
+      cursor: pointer
+    }
+
+    li input {
+      margin-top: 7px;
+      accent-color: var(--accent);
+      flex: none
+    }
+
+    li.done .t {
+      color: var(--muted)
+    }
+
+    li.done .t-title {
+      text-decoration: line-through
+    }
+
+    .b {
+      font-size: 11.5px;
+      border-radius: 6px;
+      padding: 0 8px;
+      line-height: 20px;
+      white-space: nowrap;
+      flex: none
+    }
+
+    .b1 {
+      background: var(--accent);
+      color: #fff
+    }
+
+    :root[data-theme="dark"] .b1 {
+      color: #0d1b2a
+    }
+
+    .b2 {
+      background: var(--accent-soft);
+      color: var(--accent)
+    }
+
+    .b3 {
+      border: 1px solid var(--line);
+      color: var(--muted)
+    }
+
+    body[data-filter="1"] li[data-p="2"],
+    body[data-filter="1"] li[data-p="3"],
+    body[data-filter="2"] li[data-p="3"] {
+      display: none
+    }
+
+    .res {
+      margin: 10px 6px 6px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--line)
+    }
+
+    .res h4 {
+      margin: 0 0 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px
+    }
+
+    .chip {
+      font-size: 13px;
+      line-height: 1.5;
+      padding: 2px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      text-decoration: none;
+      background: var(--card)
+    }
+
+    a.chip {
+      color: var(--accent)
+    }
+
+    a.chip:hover {
+      background: var(--hover)
+    }
+
+    .proj {
+      margin: 12px 6px 0;
+      background: var(--accent-soft);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 15px
+    }
+
+    .proj b {
+      color: var(--accent)
+    }
+
+    .ready {
+      margin: 10px 6px 0;
+      border: 1px dashed var(--accent);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 15px
+    }
+
+    .ready b {
+      color: var(--accent)
+    }
+
+    h2 {
+      font-size: 20px;
+      margin: 40px 0 12px
+    }
+
+    .tips {
+      padding: 0 4px
+    }
+
+    .tips li {
+      display: list-item;
+      list-style: disc;
+      margin-left: 20px;
+      padding: 2px 0
+    }
+
+    .tips li:hover {
+      background: none
+    }
+
+    .t-title {
+      display: block
+    }
+
+    .sub-mastery {
+      display: block;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.45;
+      margin-top: 1px
+    }
+
+    .needs {
+      display: block;
+      font-size: 12px;
+      color: var(--accent);
+      line-height: 1.45;
+      margin-top: 1px
+    }
+
+    noscript {
+      display: block;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px
+    }
+
+    button:focus-visible,
+    summary:focus-visible,
+    a:focus-visible,
+    input[type=checkbox]:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .track i {
+        transition: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body data-filter="3">
+  <main>
+    <h1>Software Engineer to Architect Roadmap</h1>
+    <p class="lead">Stack: C# and .NET on the backend, React and Next.js on the frontend. Coverage follows the SWEBOK v4
+      knowledge areas. It starts from zero knowledge and ends at architect level. Follow the phases in order: each one
+      builds on the previous.</p>
+    <p class="principle">Depth in implementation first, then design, then distributed systems, then decision-making and
+      communication. About 30% reading, 70% building. Each sub-skill has a mastery check: if you can do that sentence,
+      tick the box; if you cannot, you are not done yet. Some items also show a "Needs" line: if you do not know those,
+      go back to them first.</p>
+    <div class="flagship"><b>Flagship project:</b> pick one real idea (a booking system, a shop, an expense tracker) and
+      extend that same project in every phase instead of starting a new one each time. You finish with one portfolio
+      piece that shows the whole stack.</div>
+    <div class="legend">
+      <span>Priority of each sub-skill:</span>
+      <span><span class="b b1">Core</span> the spine of the path</span>
+      <span><span class="b b2">Important</span> learn after the core</span>
+      <span><span class="b b3">Bonus</span> extra depth</span>
+    </div>
+
+    <div class="bar-wrap">
+      <div class="row">
+        <div class="track" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100"
+          aria-valuenow="0" id="track"><i id="fill"></i></div>
+        <span class="pt" id="pt"></span>
+        <button id="theme" type="button"></button>
+      </div>
+      <div class="btns" id="filters" role="group" aria-label="Priority filter">
+        <button type="button" data-f="3" aria-pressed="false">All</button>
+        <button type="button" data-f="2" aria-pressed="false">Core + Important</button>
+        <button type="button" data-f="1" aria-pressed="false">Core only</button>
+      </div>
+    </div>
+
+    <nav id="toc" aria-label="Phases"></nav>
+    <div id="app"></div>
+    <noscript>
+      <p class="principle">JavaScript is required to display the roadmap and to track progress.</p>
+    </noscript>
+
+    <h2>Working notes</h2>
+    <ul class="tips">
+      <li>Follow the phases in order. Do not skip ahead: each phase ends with a "Ready for the next phase if" box that
+        tells you when to move on.</li>
+      <li>Each section lists one "Start here" resource. Read that first; the other chips are for depth. A sub-skill is
+        done when you can do its mastery check, not when you have read the resource.</li>
+      <li>If a resource feels too hard, check the "Needs" line of the item and go back to that skill. Being stuck
+        usually means a missing prerequisite, not a lack of talent.</li>
+      <li>Write short notes on each design decision you make. Explaining it is how you find out whether you understood
+        it.</li>
+      <li>Default to a modular monolith. Move to microservices only with a concrete reason such as team size,
+        independent scaling or deployment.</li>
+      <li>Treat LeetCode-style practice as optional interview prep. The Algorithms section itself is not optional: it is
+        about understanding complexity and data structures.</li>
+      <li>From Phase 7 on, do a game day for each phase: deliberately break the flagship (kill the database, drop a
+        message, exhaust a thread pool) and observe how the system fails.</li>
+      <li><b>License note:</b> MassTransit v9+ requires a commercial license for production. Wolverine (MIT) is a free
+        alternative with outbox and saga support. If you pick MassTransit, pin to v8 or budget for the license.</li>
+    </ul>
+  </main>
+  <script>
+    (function () {
+      var D = [
+        {
+          t: "Getting Started", s: [
+            ["Your development environment", "A working machine where you can write, run and save code.", [
+              ["Install the tools", "I can run dotnet --version in a terminal and open a project folder in my editor.", 1, "env-install"],
+              ["Terminal basics", "I can move between folders, create files and run a program from the terminal.", 1, "env-terminal"],
+              ["Create and run your first project", "I can create a console app with dotnet new, run it, and change what it prints.", 1, "env-first-project"]
+            ], [["Start here: Install .NET", "https://dotnet.microsoft.com/download"], ["Hello World in C# (Microsoft Learn)", "https://learn.microsoft.com/dotnet/csharp/tour-of-csharp/tutorials/hello-world"], ["Visual Studio Code documentation", "https://code.visualstudio.com/docs"]]],
+            ["Computer, shell and network fundamentals", "What happens inside the machine and between machines, so later topics (async, Docker, deployment) stop feeling like magic.", [
+              ["How a computer runs your program", "I can explain the CPU, memory, stack vs heap, processes and threads, and what happens when I run a program.", 1, "cs-how"],
+              ["Linux command line and shell", "I can navigate the filesystem, combine commands with pipes and grep, set file permissions and write a short bash script.", 1, "cs-linux", "Terminal basics"],
+              ["Networking basics", "I can explain IP addresses, ports, TCP vs UDP and DNS, and find which process is listening on a port.", 1, "cs-network"]
+            ], [["Start here: CS50x (Harvard)", "https://cs50.harvard.edu/x/"], ["The Linux Command Line (free book)", "https://linuxcommand.org/tlcl.php"], ["Beej's Guide to Network Concepts", "https://beej.us/guide/bgnet0/"]]],
+            ["Git and GitHub", "How to save your work, undo mistakes and collaborate without overwriting each other.", [
+              ["Commit and push", "I can create a repository, make commits with clear messages and push to GitHub.", 1, "git-commit"],
+              ["Branches and pull requests", "I can create a branch, open a pull request and merge it.", 1, "git-branches", "Commit and push"],
+              ["Resolving merge conflicts", "I can resolve a merge conflict by hand and explain what Git was telling me.", 1, "git-conflicts", "Branches and pull requests"]
+            ], [["Start here: GitHub Skills", "https://skills.github.com"], ["Learn Git Branching", "https://learngitbranching.js.org"], ["Pro Git (free book)", "https://git-scm.com/book"]]],
+            ["Learning on your own", "The habit that lets you keep going without a teacher.", [
+              ["Reading error messages", "I can read an error message, find the file and line, and say what it is complaining about.", 1, "learn-errors"],
+              ["Reading documentation and asking well", "I can find the answer in official docs, and write a question with a minimal example when I cannot.", 1, "learn-docs"]
+            ], [["Start here: Microsoft Learn .NET documentation", "https://learn.microsoft.com/dotnet/"], ["How to ask a good question", "https://stackoverflow.com/help/how-to-ask"], ["Minimal reproducible example", "https://stackoverflow.com/help/minimal-reproducible-example"]]]
+          ], p: "Project: pick your flagship idea, create a GitHub repository for it with a README that describes the idea in a few sentences, and make your first commit.", r: "Ready for the next phase if: you can create and run a .NET console app from the terminal, commit and push it to GitHub, and read an error message well enough to guess what went wrong."
+        },
+
+        {
+          t: "Programming with C#", s: [
+            ["Core programming concepts", "The building blocks every program is made of.", [
+              ["Variables, types and input/output", "I can read a value from the console, store it in a typed variable and print a result.", 1, "prog-variables"],
+              ["Conditions and loops", "I can write if, switch, for and while to solve a small problem such as FizzBuzz.", 1, "prog-control"],
+              ["Methods", "I can split a program into methods with parameters and return values.", 1, "prog-methods"],
+              ["Arrays and strings", "I can store items in an array, loop over them and manipulate strings.", 1, "prog-arrays"],
+              ["Naming and readable code", "I can rename variables and split a long method so another person can read it without comments.", 1, "prog-readable", "Methods"]
+            ], [["Start here: Get started with C# (Microsoft Learn path)", "https://learn.microsoft.com/training/paths/get-started-c-sharp-part-1/"], ["Exercism C# track", "https://exercism.org/tracks/csharp"], ["Identifier naming rules (Microsoft)", "https://learn.microsoft.com/dotnet/csharp/fundamentals/coding-style/identifier-names"]]],
+            ["Object-oriented programming", "How to model things in code, the foundation for design patterns, SOLID and DDD later.", [
+              ["Classes, objects and encapsulation", "I can write a class with private fields and public methods that protect its own rules.", 1, "oop-classes", "Methods"],
+              ["Inheritance and polymorphism", "I can write a base class and two subclasses and call them through the base type.", 1, "oop-inheritance", "Classes, objects and encapsulation"],
+              ["Interfaces and abstract classes", "I can write an interface, implement it twice, and explain when to prefer it over inheritance.", 1, "oop-interfaces", "Inheritance and polymorphism"]
+            ], [["Start here: Object-oriented programming in C#", "https://learn.microsoft.com/dotnet/csharp/fundamentals/tutorials/oop"], ["Inheritance in C#", "https://learn.microsoft.com/dotnet/csharp/fundamentals/tutorials/inheritance"], ["Interfaces in C#", "https://learn.microsoft.com/dotnet/csharp/fundamentals/types/interfaces"]]],
+            ["Types and collections", "How data is stored in memory and which container to choose.", [
+              ["Value vs reference types", "I can explain why changing a copy of a struct and a copy of a class behave differently.", 1, "types-valueref", "Classes, objects and encapsulation"],
+              ["Collections and Big-O", "I can choose between List, Dictionary and HashSet and justify it with Big-O.", 1, "types-collections"],
+              ["Generics", "I can write a generic class and a generic method with a constraint.", 1, "types-generics"],
+              ["Records and nullable reference types", "I can use a record for immutable data and fix a nullable warning correctly.", 1, "types-modern"]
+            ], [["Start here: C# type system", "https://learn.microsoft.com/dotnet/csharp/fundamentals/types/"], ["Collections in .NET", "https://learn.microsoft.com/dotnet/standard/collections/"], ["Big-O cheat sheet", "https://www.bigocheatsheet.com"]]],
+            ["Algorithms and problem solving", "Understanding complexity and data structures well enough to choose the right collection or index and to read other people's code. This is about understanding, not interview drilling; LeetCode-style practice is optional.", [
+              ["Big-O and recursion", "I can analyze the time and space complexity of a loop and write a recursive function with a base case.", 1, "algo-bigo", "Conditions and loops; Methods"],
+              ["Sorting and searching", "I can implement binary search and explain how merge sort and quicksort work and what they cost.", 1, "algo-sort", "Big-O and recursion"],
+              ["Trees, graphs and hash tables", "I can implement BFS and DFS on a graph and explain how a hash table handles collisions.", 2, "algo-graphs", "Big-O and recursion; Collections and Big-O"]
+            ], [["Start here: Algorithms, 4th edition (Princeton booksite)", "https://algs4.cs.princeton.edu"], ["VisuAlgo", "https://visualgo.net"], ["NeetCode roadmap (optional practice)", "https://neetcode.io"]]],
+            ["Errors, debugging and logging", "How to find out what your program is doing and why it fails.", [
+              ["Exceptions", "I can throw, catch and rethrow an exception, and explain when not to catch one.", 1, "err-exceptions"],
+              ["Using the debugger", "I can set a breakpoint, step through code and inspect variables to find a bug.", 1, "err-debugger"],
+              ["Structured logging", "I can log with ILogger and Serilog and explain why structured logs beat string concatenation.", 1, "err-logging"]
+            ], [["Start here: Exception handling in C#", "https://learn.microsoft.com/dotnet/csharp/fundamentals/exceptions/"], ["Debugging in VS Code", "https://code.visualstudio.com/docs/debugtest/debugging"], ["Serilog", "https://serilog.net"]]],
+            ["Projects, packages and files", "How a real .NET solution is organized, and how data gets in and out of files.", [
+              ["Solutions, projects and NuGet packages", "I can split code into two projects in one solution, add a NuGet package and explain what the csproj file contains.", 1, "proj-structure", "Create and run your first project"],
+              ["Files and JSON serialization", "I can read and write a file and convert an object to JSON and back with System.Text.Json.", 1, "proj-serialize", "Arrays and strings"]
+            ], [["Start here: NuGet documentation", "https://learn.microsoft.com/nuget/"], ["System.Text.Json overview", "https://learn.microsoft.com/dotnet/standard/serialization/system-text-json/overview"], ["File and stream I/O", "https://learn.microsoft.com/dotnet/standard/io/"]]],
+            ["Lambdas and LINQ", "The everyday tools for working with collections of data.", [
+              ["Delegates and lambdas", "I can write a lambda, pass a Func or Action, and subscribe to an event.", 1, "linq-lambdas", "Methods"],
+              ["LINQ", "I can filter, project and group a collection, and explain deferred execution.", 1, "linq-queries", "Collections and Big-O"]
+            ], [["Start here: LINQ overview", "https://learn.microsoft.com/dotnet/csharp/linq/"], ["Delegates and lambdas", "https://learn.microsoft.com/dotnet/csharp/programming-guide/delegates/"]]],
+            ["Async and memory", "How .NET handles waiting and cleaning up without blocking or leaking.", [
+              ["async/await and Task", "I can write a cancellable async method and explain what happens to the thread while awaiting.", 1, "async-task", "Methods; Exceptions"],
+              ["Thread safety", "I can choose between lock, Interlocked and concurrent collections for a given scenario.", 2, "async-threads", "async/await and Task"],
+              ["IDisposable and the garbage collector", "I can explain what the GC does and when to implement IDisposable.", 2, "async-memory", "Classes, objects and encapsulation"]
+            ], [["Start here: Asynchronous programming", "https://learn.microsoft.com/dotnet/csharp/asynchronous-programming/"], ["Stephen Cleary's blog", "https://blog.stephencleary.com"], ["Implementing Dispose", "https://learn.microsoft.com/dotnet/standard/garbage-collection/implementing-dispose"]]],
+            ["Unit testing basics", "How to prove a piece of code works and keep proving it as it changes.", [
+              ["Writing a unit test", "I can write an xUnit test with arrange, act, assert and run it from the terminal.", 1, "ut-write", "Methods; Exceptions"],
+              ["Test doubles", "I can replace a dependency with a fake using NSubstitute and explain why.", 1, "ut-doubles", "Interfaces and abstract classes"]
+            ], [["Start here: Unit testing in C# tutorial", "https://learn.microsoft.com/dotnet/core/testing/unit-testing-with-dotnet-test"], ["xUnit.net", "https://xunit.net"], ["NSubstitute", "https://nsubstitute.github.io"]]],
+            ["Mathematical foundations", "The logic and discrete math that sit under algorithms, databases and type systems.", [
+              ["Discrete math essentials", "I can use logic, sets and basic probability to reason about a program, and explain graphs and trees as mathematical structures.", 2, "math-discrete"]
+            ], [["Start here: Mathematics for Computer Science (MIT, free PDF)", "https://courses.csail.mit.edu/6.042/spring18/mcs.pdf"]]]
+          ], p: "Project: build a console app for your flagship idea (inventory or booking) with clean classes, an interface or two, unit tests and structured logging.", r: "Ready for the next phase if: you can write a small program with several classes and an interface from a blank file, find a bug with the debugger, and write a test for it."
+        },
+
+        {
+          t: "Web and Databases", s: [
+            ["How the web works", "What happens between a browser and a server, so APIs stop feeling like magic.", [
+              ["HTTP requests, responses and status codes", "I can trace a request from DNS lookup and TLS handshake to the response, and name the common status codes.", 1, "web-http"],
+              ["JSON", "I can read and write JSON and explain how it maps to objects in C#.", 1, "web-json"],
+              ["Calling an API by hand", "I can call a public API with curl or Postman and read the response.", 1, "web-postman", "HTTP requests, responses and status codes; JSON"]
+            ], [["Start here: An overview of HTTP (MDN)", "https://developer.mozilla.org/docs/Web/HTTP/Overview"], ["Working with JSON (MDN)", "https://developer.mozilla.org/docs/Learn_web_development/Core/Scripting/JSON"], ["Postman Learning Center", "https://learning.postman.com"]]],
+            ["SQL", "The language for asking questions of stored data.", [
+              ["Selecting and filtering", "I can write SELECT queries with WHERE, ORDER BY and LIMIT.", 1, "sql-select"],
+              ["Joins", "I can write a multi-table join and explain inner vs left join.", 1, "sql-joins", "Selecting and filtering"],
+              ["Aggregates and changing data", "I can use GROUP BY with aggregates, and INSERT, UPDATE and DELETE safely.", 1, "sql-aggregates", "Joins"]
+            ], [["Start here: SQLBolt", "https://sqlbolt.com"], ["PG Exercises", "https://pgexercises.com"], ["PostgreSQL tutorial", "https://www.postgresql.org/docs/current/tutorial.html"]]],
+            ["Database design", "How to store data so it stays correct and fast as it grows.", [
+              ["Keys, relationships and normalization", "I can design a normalized schema with primary and foreign keys for a real idea.", 1, "db-schema", "Aggregates and changing data"],
+              ["ER diagrams", "I can draw my schema as an ER diagram and read one drawn by someone else.", 1, "db-er", "Keys, relationships and normalization"],
+              ["Indexes and query plans", "I can read an EXPLAIN output and explain why an index is or isn't used.", 1, "db-indexes", "Joins"],
+              ["Transactions and isolation levels", "I can explain dirty read vs phantom read and pick the right isolation level.", 1, "db-transactions", "Joins"],
+              ["Choosing a database type", "I can explain when to choose relational, document or key-value storage.", 2, "db-types"]
+            ], [["Start here: Use The Index, Luke", "https://use-the-index-luke.com"], ["PostgreSQL: transactions", "https://www.postgresql.org/docs/current/tutorial-transactions.html"], ["dbdiagram.io", "https://dbdiagram.io"]]],
+            ["Concurrency and schema change", "How to keep data correct when many users write at once and when the schema must change while the system runs.", [
+              ["Concurrency control and locking", "I can explain optimistic vs pessimistic locking, reproduce a deadlock and fix it.", 1, "db-concurrency", "Transactions and isolation levels"],
+              ["Changing a schema in production", "I can apply a schema change with the expand and contract pattern without breaking running code or locking the table.", 2, "db-evolution", "Keys, relationships and normalization"]
+            ], [["Start here: PostgreSQL explicit locking", "https://www.postgresql.org/docs/current/explicit-locking.html"], ["Parallel Change (Martin Fowler)", "https://martinfowler.com/bliki/ParallelChange.html"], ["Evolutionary Database Design (Martin Fowler)", "https://martinfowler.com/articles/evodb.html"]]]
+          ], p: "Project: design the flagship's database schema in PostgreSQL, draw the ER diagram, load sample data and write the ten queries your app will need.", r: "Ready for the next phase if: you can design a small schema from a description, write joins and aggregates without looking them up, and explain why a query is slow."
+        },
+
+        {
+          t: "Backend Development", s: [
+            ["ASP.NET Core fundamentals", "How to build and operate an HTTP API in .NET without fighting the framework.", [
+              ["Minimal APIs and controllers", "I can build a simple CRUD in both styles and explain when to prefer each.", 1, "aspnet-minimal", "HTTP requests, responses and status codes; Classes, objects and encapsulation"],
+              ["Dependency injection", "I can explain DI lifetimes (singleton, scoped, transient) and register my own service.", 1, "aspnet-di", "Interfaces and abstract classes"],
+              ["Middleware", "I can write custom middleware and explain the order they run in.", 1, "aspnet-middleware", "Minimal APIs and controllers"],
+              ["Background services and scheduled jobs", "I can run work outside the request with BackgroundService and schedule a recurring job with Hangfire or Quartz.", 1, "aspnet-background", "Dependency injection"],
+              ["Configuration and options", "I can bind options from appsettings and environment variables and validate them on startup.", 2, "aspnet-config", "Minimal APIs and controllers"]
+            ], [["Start here: Tutorial: Create a minimal API", "https://learn.microsoft.com/aspnet/core/tutorials/min-web-api"], ["ASP.NET Core documentation", "https://learn.microsoft.com/aspnet/core/"], ["Andrew Lock's blog", "https://andrewlock.net"], ["Background tasks with hosted services", "https://learn.microsoft.com/aspnet/core/fundamentals/host/hosted-services"], ["Hangfire", "https://www.hangfire.io"]]],
+            ["Entity Framework Core", "How to use EF Core without accidentally writing N+1 queries.", [
+              ["DbContext, entities and migrations", "I can map entities to my schema and create a reversible migration.", 1, "ef-config", "Aggregates and changing data; Classes, objects and encapsulation"],
+              ["Relationships and N+1", "I can configure relationships, spot an N+1 in the logs and fix it with Include or a projection.", 1, "ef-nplus1", "DbContext, entities and migrations"],
+              ["Change tracking", "I can explain tracking vs no-tracking and pick the right one for a read.", 3, "ef-tracking", "DbContext, entities and migrations"]
+            ], [["Start here: Getting started with EF Core", "https://learn.microsoft.com/ef/core/get-started/overview/first-app"], ["EF Core documentation", "https://learn.microsoft.com/ef/core/"], ["Dapper", "https://github.com/DapperLib/Dapper"]]],
+            ["API design", "How to design an API that clients can use and evolve without breaking.", [
+              ["REST resources and status codes", "I can design resource URLs and return the correct status code for each case.", 1, "api-rest", "HTTP requests, responses and status codes"],
+              ["Validation and ProblemDetails", "I can validate input with FluentValidation and return ProblemDetails on failure.", 1, "api-validation", "Minimal APIs and controllers"],
+              ["Pagination, filtering and OpenAPI", "I can paginate a list endpoint and document the API in OpenAPI.", 1, "api-openapi", "REST resources and status codes"],
+              ["Versioning and idempotency", "I can version an API and add idempotency keys for unsafe operations.", 2, "api-versioning", "REST resources and status codes"],
+              ["Interface design principles", "I can design an interface that is easy to use and hard to misuse, and choose between synchronous and asynchronous, stateless and stateful styles for it.", 2, "api-interface-design", "Interfaces and abstract classes; REST resources and status codes"]
+            ], [["Start here: Microsoft REST API guidelines", "https://github.com/microsoft/api-guidelines"], ["Learn OpenAPI", "https://learn.openapis.org"], ["gRPC for .NET (optional)", "https://learn.microsoft.com/aspnet/core/grpc/"], ["API Improvement Proposals (Google)", "https://google.aip.dev"]]],
+            ["Real-time and RPC", "How to push data to clients and call services efficiently when plain request and response is not enough.", [
+              ["Real-time with SignalR", "I can build a SignalR hub, push a message from the server to connected clients and explain WebSockets vs SSE vs long polling.", 2, "rt-signalr", "Minimal APIs and controllers; Dependency injection"],
+              ["gRPC", "I can define a .proto contract, generate a server and client and explain when to choose gRPC over REST.", 2, "rt-grpc", "REST resources and status codes"]
+            ], [["Start here: Introduction to ASP.NET Core SignalR", "https://learn.microsoft.com/aspnet/core/signalr/introduction"], ["gRPC services with ASP.NET Core", "https://learn.microsoft.com/aspnet/core/grpc/"], ["WebSockets API (MDN)", "https://developer.mozilla.org/docs/Web/API/WebSockets_API"]]],
+            ["Security and authentication", "How to keep an API safe: identity, authorization and the attacks that actually happen.", [
+              ["Password hashing and JWT", "I can hash passwords and issue access and refresh tokens safely.", 1, "sec-jwt", "Middleware"],
+              ["Authorization policies", "I can write a policy-based authorization rule and explain claims vs roles.", 1, "sec-authz", "Password hashing and JWT"],
+              ["OWASP Top 10", "I can explain injection, XSS and CSRF and how to prevent each in ASP.NET Core.", 1, "sec-owasp"],
+              ["OAuth 2.0 and OpenID Connect", "I can explain the flows and choose one for a SPA plus API setup.", 2, "sec-oauth", "Password hashing and JWT"]
+            ], [["Start here: OWASP Cheat Sheet Series", "https://cheatsheetseries.owasp.org"], ["ASP.NET Core security documentation", "https://learn.microsoft.com/aspnet/core/security/"], ["PortSwigger Web Security Academy", "https://portswigger.net/web-security"]]],
+            ["Secrets and cryptography", "How to keep keys and passwords out of the wrong hands and what the cryptography underneath actually does.", [
+              ["Secrets management", "I can keep secrets out of source control with user-secrets and environment variables, and explain how a vault differs.", 1, "sec-secrets", "Minimal APIs and controllers"],
+              ["Cryptography basics", "I can explain hashing vs encryption, symmetric vs asymmetric keys, digital signatures and how a TLS certificate is verified.", 1, "sec-crypto"]
+            ], [["Start here: Safe storage of app secrets in development", "https://learn.microsoft.com/aspnet/core/security/app-secrets"], ["Practical Cryptography for Developers", "https://cryptobook.nakov.com"], ["OWASP Cryptographic Storage Cheat Sheet", "https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html"]]],
+            ["Docker basics", "How to package your app so it runs the same on every machine.", [
+              ["Docker and Compose", "I can write a multi-stage Dockerfile and run the API with its database through Docker Compose.", 1, "docker-basics", "Terminal basics"]
+            ], [["Start here: Docker get started", "https://docs.docker.com/get-started/"], ["Docker Compose overview", "https://docs.docker.com/compose/"]]],
+            ["Testing the API", "How to decide what to test and where, so the test suite stays fast and trustworthy.", [
+              ["The test pyramid and integration tests", "I can decide what to test at unit and integration level, and test an endpoint with WebApplicationFactory.", 1, "test-integration", "Writing a unit test; Minimal APIs and controllers"],
+              ["Testcontainers", "I can run my integration tests against a real database in a container.", 2, "test-containers", "Docker and Compose"]
+            ], [["Start here: Integration tests in ASP.NET Core", "https://learn.microsoft.com/aspnet/core/test/integration-tests"], ["The Practical Test Pyramid (Martin Fowler)", "https://martinfowler.com/articles/practical-test-pyramid.html"], ["Testcontainers for .NET", "https://dotnet.testcontainers.org"]]]
+          ], p: "Project: turn the flagship into a REST API with JWT auth, a PostgreSQL database through EF Core, OpenAPI docs, integration tests and a Docker Compose setup that starts everything with one command.", r: "Ready for the next phase if: you can build a CRUD API with authentication and tests from scratch, run it in Docker, and explain how a request moves through middleware to the database and back."
+        },
+
+        {
+          t: "Frontend: React and Next.js", s: [
+            ["Web basics and TypeScript", "The browser platform and a typed language on top of it.", [
+              ["Semantic HTML and accessibility", "I can build a page with proper landmarks, labels and keyboard navigation.", 1, "fe-html"],
+              ["CSS layout", "I can build a responsive layout with Flexbox and Grid without a framework.", 1, "fe-css", "Semantic HTML and accessibility"],
+              ["JavaScript core", "I can explain closures, the event loop, and promises vs callbacks.", 1, "fe-js"],
+              ["The DOM and browser events", "I can select elements, handle a click and update the page with plain JavaScript and no framework.", 1, "fe-dom", "JavaScript core; Semantic HTML and accessibility"],
+              ["Node.js, npm and project setup", "I can install Node.js, create a project with npm, add a package and run a development server.", 1, "fe-node", "Terminal basics; JavaScript core"],
+              ["Fetching data", "I can call my API with fetch, handle loading and errors, and update the page.", 1, "fe-fetch", "The DOM and browser events; JSON"],
+              ["CORS and the browser security model", "I can explain the same-origin policy and fix a CORS error between my frontend and my API without allowing every origin.", 1, "fe-cors", "Fetching data; Middleware"],
+              ["TypeScript", "I can write types, generics and discriminated unions, and fix a type error.", 1, "fe-ts", "JavaScript core; Node.js, npm and project setup"]
+            ], [["Start here: Learn web development (MDN)", "https://developer.mozilla.org/docs/Learn_web_development"], ["javascript.info", "https://javascript.info"], ["Introduction to the DOM (MDN)", "https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction"], ["CORS (MDN)", "https://developer.mozilla.org/docs/Web/HTTP/CORS"], ["Enable CORS in ASP.NET Core", "https://learn.microsoft.com/aspnet/core/security/cors"], ["TypeScript Handbook", "https://www.typescriptlang.org/docs/handbook/intro.html"]]],
+            ["React", "How to build a UI with hooks, forms and server data without duplicating state.", [
+              ["Components, props and state", "I can build a component tree and lift state where it belongs.", 1, "react-components", "JavaScript core; TypeScript"],
+              ["Hooks", "I can write a custom hook and explain useEffect dependencies and cleanup.", 1, "react-hooks", "Components, props and state"],
+              ["Forms and validation", "I can build a form with React Hook Form and Zod validation.", 1, "react-forms", "Hooks"],
+              ["Server state with TanStack Query", "I can fetch, cache, mutate and invalidate server data.", 1, "react-query", "Hooks; Fetching data"]
+            ], [["Start here: React documentation", "https://react.dev/learn"], ["TanStack Query documentation", "https://tanstack.com/query/latest"], ["React Hook Form", "https://react-hook-form.com"]]],
+            ["Next.js", "How to render on the server, cache data and integrate auth against a .NET API.", [
+              ["App Router and layouts", "I can build nested layouts and route groups.", 1, "next-layouts", "Components, props and state"],
+              ["Server vs Client Components", "I can decide which components are server vs client and why.", 1, "next-serverclient", "App Router and layouts"],
+              ["Rendering and caching", "I can decide for a page whether to render it statically, on each request or from cached data, and justify the choice with the caching model of the Next.js version I installed.", 1, "next-rendering", "Server vs Client Components"],
+              ["Authentication", "I can integrate Auth.js or a JWT flow against my .NET API.", 2, "next-auth", "Password hashing and JWT; Server vs Client Components"]
+            ], [["Start here: Learn Next.js", "https://nextjs.org/learn"], ["Next.js documentation", "https://nextjs.org/docs"], ["Auth.js", "https://authjs.dev"]]],
+            ["Frontend quality and performance", "How to make a frontend fast, accessible and safe.", [
+              ["Frontend security", "I can set a CSP, avoid XSS, and store tokens safely.", 1, "fe-security", "OWASP Top 10"],
+              ["Component testing", "I can write component tests with Vitest and Testing Library.", 1, "fe-component-tests", "Components, props and state"],
+              ["Core Web Vitals", "I can measure LCP, INP and CLS and fix the biggest offender.", 2, "fe-vitals"],
+              ["End-to-end testing", "I can write a Playwright test that covers a full user flow.", 2, "fe-e2e", "Component testing"]
+            ], [["Start here: Web Vitals (web.dev)", "https://web.dev/articles/vitals"], ["Testing Library", "https://testing-library.com/docs/"], ["Playwright", "https://playwright.dev/docs/intro"]]]
+          ], p: "Project: build the flagship's UI in Next.js against your API, with login, forms, pagination and tests.", r: "Ready for the next phase if: you can build a multi-page app that logs in against your own API, shows lists and forms, handles CORS correctly and has at least a few automated tests."
+        },
+
+        {
+          t: "Code Quality and Process", s: [
+            ["Clean code and refactoring", "How to leave code better than you found it, without a rewrite.", [
+              ["SOLID principles", "I can point at a SOLID violation in real code and propose a fix.", 1, "cq-solid", "Interfaces and abstract classes"],
+              ["Code smells and refactoring", "I can name a smell and apply the matching refactoring with tests protecting me.", 1, "cq-refactoring", "Writing a unit test"],
+              ["Static analysis", "I can configure Roslyn analyzers and fix the reported warnings.", 3, "cq-static"]
+            ], [["Start here: Refactoring Guru: refactoring", "https://refactoring.guru/refactoring"], ["Code analysis in .NET", "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/overview"], ["Conventional Commits", "https://www.conventionalcommits.org"]]],
+            ["Code review", "How to give and receive feedback that makes the code better.", [
+              ["Reviewing a pull request", "I can review a PR I did not write and give actionable feedback, and write a PR that is easy to review.", 1, "review-pr", "Branches and pull requests"]
+            ], [["Start here: Google Engineering Practices: code review", "https://google.github.io/eng-practices/review/"]]],
+            ["Requirements and process", "How to turn vague requests into testable stories and keep the process honest.", [
+              ["Functional vs non-functional requirements", "I can separate what the system does from how well it must do it.", 1, "req-functional"],
+              ["User stories and acceptance criteria", "I can split a feature into stories with testable acceptance criteria.", 1, "req-stories"],
+              ["Technical debt", "I can classify debt and propose when to pay it down.", 1, "req-debt", "Code smells and refactoring"],
+              ["Scrum and Kanban", "I can explain the ceremonies and when Kanban fits better.", 2, "req-scrum"],
+              ["Software life cycle models", "I can compare waterfall, iterative, agile and DevOps life cycles and choose one for a given project.", 1, "req-lifecycle"]
+            ], [["Start here: User stories (Atlassian)", "https://www.atlassian.com/agile/project-management/user-stories"], ["The Scrum Guide", "https://scrumguides.org"], ["Software Engineering at Google (free book)", "https://abseil.io/resources/swe-book"]]],
+            ["Planning and risk", "How to say how long something will take and what could go wrong, honestly and in numbers.", [
+              ["Estimation and planning", "I can estimate a feature with story points or three-point estimates and build a simple release plan.", 1, "plan-estimation", "User stories and acceptance criteria"],
+              ["Risk management", "I can list the risks of a project, rate them by likelihood and impact and write a mitigation for each.", 1, "plan-risk"]
+            ], [["Start here: Agile estimation (Atlassian)", "https://www.atlassian.com/agile/project-management/estimation"], ["Atlassian agile guide", "https://www.atlassian.com/agile"], ["Software Engineering at Google (free book)", "https://abseil.io/resources/swe-book"]]],
+            ["Testing in practice", "How to use tests to design and protect code, not just to check it.", [
+              ["Deciding what to test and what to mock", "I can pick the right level for a test and avoid over-mocking.", 1, "tp-what", "The test pyramid and integration tests; Test doubles"],
+              ["Test-driven development", "I can drive a small feature with red-green-refactor.", 2, "tp-tdd", "Writing a unit test"],
+              ["Test design techniques", "I can design test cases with equivalence partitioning and boundary value analysis for a function with several inputs.", 1, "tp-design", "Writing a unit test"],
+              ["Contract testing", "I can write a consumer-driven contract test with Pact and explain what it prevents.", 2, "tp-contract", "The test pyramid and integration tests"],
+              ["Reporting and analyzing a defect", "I can write a bug report that someone else can reproduce and find the root cause with the five whys.", 1, "tp-defects", "Using the debugger"]
+            ], [["Start here: Unit testing best practices (Microsoft Learn)", "https://learn.microsoft.com/dotnet/core/testing/unit-testing-best-practices"], ["The Practical Test Pyramid (Martin Fowler)", "https://martinfowler.com/articles/practical-test-pyramid.html"], ["Boundary value analysis (Wikipedia)", "https://en.wikipedia.org/wiki/Boundary-value_analysis"], ["Pact documentation", "https://docs.pact.io"], ["Postmortem culture (Google SRE book)", "https://sre.google/sre-book/postmortem-culture/"], ["Five whys (Wikipedia)", "https://en.wikipedia.org/wiki/Five_whys"]]],
+            ["Releases and configuration", "How code moves from a branch to users in a controlled, reversible and legal way.", [
+              ["Branching strategies and versioning", "I can compare trunk-based development with GitFlow and version a release with semantic versioning and a changelog.", 1, "cm-branching", "Branches and pull requests"],
+              ["Feature flags", "I can ship unfinished code behind a feature flag and turn it on without a deploy.", 1, "cm-flags", "Dependency injection"],
+              ["Dependencies and licenses", "I can scan my dependencies for known vulnerabilities, keep them updated and explain the difference between MIT, Apache and GPL licenses.", 1, "cm-deps", "Solutions, projects and NuGet packages"]
+            ], [["Start here: Trunk Based Development", "https://trunkbaseddevelopment.com"], ["Feature Toggles (Martin Fowler)", "https://martinfowler.com/articles/feature-toggles.html"], ["Semantic Versioning", "https://semver.org"], ["Dependabot documentation", "https://docs.github.com/code-security/dependabot"], ["Choose a License", "https://choosealicense.com"]]]
+          ], p: "Practice: for each new flagship feature, write the acceptance criteria first, add tests, and open a pull request that someone else could review. Refactor one messy area you wrote earlier.", r: "Ready for the next phase if: you can read a piece of messy code, say what is wrong with it, refactor it safely with tests, and write acceptance criteria for a new feature."
+        },
+
+        {
+          t: "Software Analysis and Design", s: [
+            ["Requirements analysis and specification", "How to find out what to build and write it down so developers and testers agree on it.", [
+              ["Stakeholders, concerns and assumptions", "I can list the stakeholders of a system with their concerns, find where those concerns conflict and write down the assumptions I am making.", 1, "ra-stakeholders", "Functional vs non-functional requirements"],
+              ["Eliciting requirements", "I can run a short stakeholder interview and turn the answers into a prioritized list of requirements.", 1, "ra-elicit", "Functional vs non-functional requirements; User stories and acceptance criteria"],
+              ["Use cases and scenarios", "I can write a use case with actors, a main flow and alternative flows for one feature.", 1, "ra-usecase", "Eliciting requirements"],
+              ["Requirements specification", "I can write a short requirements specification and review it for ambiguity, conflicts and missing cases.", 1, "ra-spec", "Use cases and scenarios"]
+            ], [["Start here: Use case diagrams (UML Diagrams)", "https://www.uml-diagrams.org/use-case-diagrams.html"], ["Volere requirements resources", "https://www.volere.org"], ["SWEBOK Guide v4: topics", "https://computer.org/education/bodies-of-knowledge/software-engineering/topics"], ["ISO/IEC/IEEE 42010 summary (arc42)", "https://quality.arc42.org/standards/iso-42010"]]],
+            ["Modeling with UML", "The standard visual language for showing structure and behavior before and after you code it.", [
+              ["UML class diagrams", "I can draw a class diagram with attributes, methods, associations, multiplicity, inheritance and interfaces for my flagship's domain.", 1, "uml-class", "Classes, objects and encapsulation; Inheritance and polymorphism"],
+              ["UML sequence and state diagrams", "I can draw a sequence diagram of one request through my API's layers and a state diagram of one entity's life cycle.", 1, "uml-seq", "UML class diagrams"]
+            ], [["Start here: UML Diagrams", "https://www.uml-diagrams.org"], ["Mermaid class diagrams", "https://mermaid.js.org/syntax/classDiagram.html"], ["Mermaid sequence diagrams", "https://mermaid.js.org/syntax/sequenceDiagram.html"]]],
+            ["Domain modeling and design quality", "How to turn requirements into a model of the business and judge whether a design is good.", [
+              ["Domain modeling", "I can identify entities, relationships and business rules from a requirements text and capture them in a domain model.", 1, "dm-model", "Use cases and scenarios; UML class diagrams"],
+              ["Core design principles", "I can explain information hiding, separation of concerns, KISS, YAGNI and DRY, and point out where my own code breaks one of them.", 1, "dm-principles", "Classes, objects and encapsulation"],
+              ["Coupling and cohesion", "I can explain coupling and cohesion in a module and refactor it to reduce coupling.", 1, "dm-coupling", "SOLID principles"]
+            ], [["Start here: Domain Model (Martin Fowler)", "https://martinfowler.com/eaaCatalog/domainModel.html"], ["Software Engineering at Google (free book)", "https://abseil.io/resources/swe-book"], ["YAGNI (Martin Fowler)", "https://martinfowler.com/bliki/Yagni.html"]]]
+          ], p: "Project: write the requirements specification and the main use cases for the flagship, then a domain model, a class diagram and a sequence diagram of its main flow. Check that the code you already wrote matches them, and fix the one that is wrong.", r: "Ready for the next phase if: you can go from a vague idea to a written specification, a domain model and diagrams that a developer could implement without asking you questions."
+        },
+
+        {
+          t: "Design Patterns and Application Architecture", s: [
+            ["Design patterns", "The vocabulary to read other people's code, and the judgment not to over-apply it.", [
+              ["Recognizing common patterns", "I can recognize Factory, Builder, Adapter, Decorator, Strategy and Observer in code, and name one that was applied without a reason.", 1, "pat-recognize", "SOLID principles"]
+            ], [["Start here: Refactoring Guru: design patterns", "https://refactoring.guru/design-patterns"]]],
+            ["Application architecture", "How to structure a codebase so domain rules are explicit and dependencies point inward.", [
+              ["Layered vs Clean Architecture", "I can explain dependency direction and refactor a layer violation.", 1, "arch-clean", "Dependency injection; SOLID principles"],
+              ["Hexagonal architecture (ports and adapters)", "I can isolate the domain behind ports and swap an adapter, such as the database, without touching the domain.", 1, "arch-hexagonal", "Layered vs Clean Architecture"],
+              ["Architecture tests", "I can turn a dependency rule such as \"Domain must not reference Infrastructure\" into a test that fails the build when it is broken.", 2, "arch-tests", "Hexagonal architecture (ports and adapters); Writing a unit test"],
+              ["Modular monolith", "I can split a codebase into modules with clear boundaries inside one deployable.", 1, "arch-modular", "Layered vs Clean Architecture"],
+              ["Vertical Slice and CQRS", "I can structure a feature as a vertical slice with a command handler and a separate query.", 2, "arch-vertical", "Layered vs Clean Architecture"]
+            ], [["Start here: Architecting modern web applications with ASP.NET Core and Azure", "https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/"], ["Ardalis Clean Architecture template", "https://github.com/ardalis/CleanArchitecture"], ["Hexagonal Architecture (Alistair Cockburn)", "https://alistair.cockburn.us/hexagonal-architecture/"], ["NetArchTest", "https://github.com/BenMorris/NetArchTest"], ["ArchUnitNET", "https://github.com/TNG/ArchUnitNET"]]],
+            ["Architecture styles", "The main shapes a system can take, and how to pick one for a given set of requirements.", [
+              ["Architecture styles overview", "I can describe layered, event-driven, microservices, serverless and pipeline styles and choose one for a given set of requirements.", 1, "style-overview", "Layered vs Clean Architecture"]
+            ], [["Start here: Architecture styles (Azure Architecture Center)", "https://learn.microsoft.com/azure/architecture/guide/architecture-styles/"], ["Software Architecture Guide (Martin Fowler)", "https://martinfowler.com/architecture/"]]],
+            ["Domain-driven design", "How to model the business so the code speaks the same language as the people who use it.", [
+              ["Entities, value objects and aggregates", "I can model a domain with aggregates that protect their invariants.", 1, "ddd-aggregates", "Classes, objects and encapsulation"],
+              ["Domain events", "I can raise and handle a domain event in-process.", 1, "ddd-events", "Entities, value objects and aggregates"],
+              ["Bounded contexts", "I can split a domain into bounded contexts and draw a context map.", 2, "ddd-bounded", "Entities, value objects and aggregates"]
+            ], [["Start here: DDD-oriented microservice design (Microsoft Learn)", "https://learn.microsoft.com/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/"], ["Domain-Driven Design Reference (Eric Evans)", "https://www.domainlanguage.com/ddd/reference/"]]],
+            ["Event-driven thinking", "How to model a business flow as events and reason about consistency.", [
+              ["Events, commands and queries", "I can name each and choose the right one for a flow.", 1, "evt-commands"],
+              ["Event-driven vs request-response", "I can explain when events decouple better and when they hurt.", 1, "evt-vs-rpc", "Events, commands and queries"],
+              ["Eventual consistency", "I can describe a flow that is eventually consistent and its failure modes.", 1, "evt-consistency", "Transactions and isolation levels"],
+              ["Event sourcing", "I can store a domain object as a sequence of events and rebuild its current state from them.", 2, "evt-sourcing", "Domain events"]
+            ], [["Start here: Event-driven architecture style (Microsoft)", "https://learn.microsoft.com/azure/architecture/guide/architecture-styles/event-driven"], ["CQRS pattern (Microsoft)", "https://learn.microsoft.com/azure/architecture/patterns/cqrs"], ["Event Sourcing pattern (Microsoft)", "https://learn.microsoft.com/azure/architecture/patterns/event-sourcing"]]],
+            ["Evolving existing systems", "How to change a system that is already in production and that you did not write.", [
+              ["Legacy modernization", "I can plan a migration with the Strangler Fig pattern and isolate old code behind an anti-corruption layer.", 1, "evo-strangler", "Modular monolith; Code smells and refactoring"]
+            ], [["Start here: Strangler Fig Application (Martin Fowler)", "https://martinfowler.com/bliki/StranglerFigApplication.html"], ["Anti-corruption layer pattern (Microsoft)", "https://learn.microsoft.com/azure/architecture/patterns/anti-corruption-layer"]]],
+            ["Documenting architecture", "How to make a system understandable to someone who joins tomorrow.", [
+              ["C4 model", "I can draw context, container and component diagrams for a system.", 1, "doc-c4"],
+              ["Architecture Decision Records", "I can write an ADR with context, decision and consequences.", 1, "doc-adr"],
+              ["Diagrams as code", "I can keep diagrams in Mermaid alongside the code.", 3, "doc-mermaid", "C4 model"]
+            ], [["Start here: C4 model", "https://c4model.com"], ["ADR GitHub organization", "https://adr.github.io"], ["Mermaid", "https://mermaid.js.org"]]]
+          ], p: "Project: restructure the flagship with Clean Architecture and at least four patterns, with tests proving behavior is unchanged. Convert one business flow to CQRS, then draw the C4 diagrams and write ADRs for the decisions you made.", r: "Ready for the next phase if: you can explain why your project is structured the way it is, show the dependency direction on a diagram, and point to the ADR behind each major decision."
+        },
+
+        {
+          t: "Infrastructure and Operations", s: [
+            ["CI/CD and infrastructure as code", "How to ship software reliably without a manual checklist.", [
+              ["Continuous integration", "I can build and test on every push with a GitHub Actions workflow.", 1, "ops-ci", "Docker and Compose; Commit and push"],
+              ["Continuous delivery and environments", "I can deploy to staging and production with a gated pipeline.", 1, "ops-cd", "Continuous integration"],
+              ["Deployment strategies", "I can describe and perform a rolling, blue-green and canary deployment and roll back a bad release.", 1, "ops-strategies", "Continuous delivery and environments"],
+              ["Infrastructure as Code", "I can define a cloud resource in Terraform or Bicep and apply it.", 2, "ops-iac", "Continuous delivery and environments"]
+            ], [["Start here: GitHub Actions documentation", "https://docs.github.com/actions"], ["The Twelve-Factor App", "https://12factor.net"], ["Terraform tutorials", "https://developer.hashicorp.com/terraform/tutorials"], ["Blue-green deployment (Martin Fowler)", "https://martinfowler.com/bliki/BlueGreenDeployment.html"], ["Canary release (Martin Fowler)", "https://martinfowler.com/bliki/CanaryRelease.html"]]],
+            ["Cloud", "How to pick and pay for the right building blocks.", [
+              ["Cloud fundamentals", "I can pick the right compute, storage and networking service for a workload.", 1, "cloud-fund"],
+              ["Capacity estimation", "I can estimate requests per second, storage and bandwidth for a described system.", 1, "sd-capacity", "Cloud fundamentals"],
+              ["IAM and secrets", "I can assign least-privilege roles and read secrets from a managed vault.", 1, "cloud-iam", "Cloud fundamentals"],
+              ["Cost estimation", "I can estimate monthly cost of a feature (compute, storage, egress) and defend it.", 1, "cloud-cost", "Cloud fundamentals; Capacity estimation"]
+            ], [["Start here: Azure Fundamentals (AZ-900)", "https://learn.microsoft.com/credentials/certifications/azure-fundamentals/"], ["Azure Architecture Center", "https://learn.microsoft.com/azure/architecture/"], ["Azure pricing calculator", "https://azure.microsoft.com/pricing/calculator/"], ["System Design Primer (back-of-envelope estimates)", "https://github.com/donnemartin/system-design-primer"]]],
+            ["Reliability and recovery", "How to plan for the day something breaks: backups, availability and a tested way back.", [
+              ["Backup, high availability and disaster recovery", "I can define RPO and RTO for a service, restore a database from a backup and describe a multi-zone design.", 1, "cloud-dr", "Cloud fundamentals"]
+            ], [["Start here: Reliability (Azure Well-Architected)", "https://learn.microsoft.com/azure/well-architected/reliability/"], ["Reliability pillar (AWS Well-Architected)", "https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html"]]],
+            ["Kubernetes", "How to run a service on a cluster without fighting the platform.", [
+              ["Kubernetes basics", "I can deploy a Pod, a Deployment and a Service and explain each.", 1, "k8s-basic", "Docker and Compose"],
+              ["Kubernetes networking and config", "I can expose an app with Ingress and inject ConfigMaps and Secrets.", 3, "k8s-net", "Kubernetes basics"]
+            ], [["Start here: Kubernetes basics tutorial", "https://kubernetes.io/docs/tutorials/kubernetes-basics/"], ["Kubernetes tutorials", "https://kubernetes.io/docs/tutorials/"]]],
+            ["Observability and reliability", "How to know what your system is doing in production and what to do when it breaks.", [
+              ["Logs and metrics", "I can emit logs and metrics that answer a real question.", 1, "obs-logs", "Structured logging"],
+              ["Distributed tracing", "I can trace one request across services with OpenTelemetry.", 1, "obs-tracing", "Logs and metrics"],
+              ["Dashboards and alerts", "I can build a dashboard and an alert rule that fires on a real problem.", 1, "obs-alerts", "Logs and metrics"],
+              ["Incident response", "I have run a game day and written a blameless postmortem.", 1, "obs-incident", "Dashboards and alerts"],
+              ["SLIs, SLOs and error budgets", "I can define an SLO for a service and use it to decide when to stop shipping.", 2, "obs-slo", "Dashboards and alerts"],
+              ["Orchestrating services with Aspire (formerly .NET Aspire)", "I can run several services and a database with one AppHost and read their traces and logs in the dashboard.", 3, "ops-aspire", "Docker and Compose; Distributed tracing"]
+            ], [["Start here: Google SRE Book (free)", "https://sre.google/sre-book/table-of-contents/"], ["OpenTelemetry for .NET", "https://opentelemetry.io/docs/languages/dotnet/"], ["Grafana tutorials", "https://grafana.com/tutorials/"], ["Aspire documentation", "https://aspire.dev"]]],
+            ["Performance", "How to find real bottlenecks instead of guessing.", [
+              ["Profiling", "I can profile a slow endpoint with dotnet-trace and find the hotspot.", 1, "perf-profile", "Using the debugger"],
+              ["Load testing", "I can write a k6 script and interpret the results.", 2, "perf-load", "Calling an API by hand"]
+            ], [["Start here: .NET diagnostics documentation", "https://learn.microsoft.com/dotnet/core/diagnostics/"], ["k6 documentation", "https://grafana.com/docs/k6/latest/"]]]
+          ], p: "Project: deploy the flagship through a CI/CD pipeline, add dashboards, alert rules and a load test, then fix the top bottleneck. Estimate the monthly cost and write it down.", r: "Ready for the next phase if: every push to your repository is built, tested and deployed automatically, and you can find out from dashboards and traces why a request was slow or failed."
+        },
+
+        {
+          t: "Distributed Systems and Scalable Architecture", s: [
+            ["Distributed systems fundamentals", "Why networked systems fail in ways single-process systems never do.", [
+              ["CAP and consistency models", "I can pick a consistency model for a scenario and defend it.", 1, "dist-cap", "Transactions and isolation levels; Eventual consistency"],
+              ["Replication and sharding", "I can describe leader-follower replication and hash-based sharding.", 1, "dist-replication", "Indexes and query plans"],
+              ["Distributed transactions", "I can explain two-phase commit, why it scales badly and what to use instead.", 1, "dist-2pc", "Transactions and isolation levels"],
+              ["Idempotency", "I can make an operation idempotent and explain why it matters.", 1, "dist-idempotency"],
+              ["Failure modes", "I can name the fallacies of distributed computing and give an example of each.", 1, "dist-failures"]
+            ], [["Start here: Distributed Systems for Fun and Profit (free book)", "http://book.mixu.net/distsys/"], ["MIT Distributed Systems course (6.5840)", "https://pdos.csail.mit.edu/6.824/"], ["Saga pattern (microservices.io)", "https://microservices.io/patterns/data/saga.html"]]],
+            ["Scaling", "How to serve more users by adding machines instead of bigger machines.", [
+              ["Load balancing, horizontal scaling and stateless design", "I can scale a service horizontally behind a load balancer, explain why it must be stateless and say where session state goes.", 1, "scale-lb", "Networking basics; Docker and Compose"]
+            ], [["Start here: What is load balancing? (Cloudflare)", "https://www.cloudflare.com/learning/performance/what-is-load-balancing/"], ["System Design Primer", "https://github.com/donnemartin/system-design-primer"]]],
+            ["Messaging", "How to move data between services without losing messages or corrupting state.", [
+              ["Queues vs pub/sub", "I can choose between a queue and a topic for a given flow.", 1, "msg-queues", "Events, commands and queries"],
+              ["Message broker with a .NET library", "I can publish and consume a message with RabbitMQ and MassTransit, or the MIT-licensed Wolverine.", 1, "msg-rabbit", "Queues vs pub/sub"],
+              ["Outbox pattern", "I can implement an outbox so a database write and a message commit atomically.", 1, "msg-outbox", "Transactions and isolation levels; Message broker with a .NET library"],
+              ["Idempotent consumers and dead-letter queues", "I can make a consumer idempotent and configure a dead-letter queue.", 1, "msg-idempotent", "Idempotency"],
+              ["Kafka basics", "I can explain partitions, consumer groups and at-least-once vs exactly-once delivery.", 3, "msg-kafka", "Queues vs pub/sub"]
+            ], [["Start here: RabbitMQ tutorials", "https://www.rabbitmq.com/tutorials"], ["Transactional outbox (microservices.io)", "https://microservices.io/patterns/data/transactional-outbox.html"], ["MassTransit documentation", "https://masstransit.io"]]],
+            ["Caching", "How to make reads fast without serving wrong data.", [
+              ["Cache-aside with Redis", "I can implement cache-aside with invalidation and explain the pitfalls.", 1, "cache-aside"]
+            ], [["Start here: Cache-aside pattern (Microsoft)", "https://learn.microsoft.com/azure/architecture/patterns/cache-aside"], ["Redis University", "https://university.redis.io"]]],
+            ["Microservice patterns and resilience", "How to decide whether to split a system, and how to keep it alive when a dependency fails.", [
+              ["Monolith vs microservices", "I can list the trade-offs and pick the right shape for a given team size.", 1, "ms-shape", "Modular monolith"],
+              ["Resilience with Polly", "I can add retry, timeout and circuit breaker with Polly.", 1, "ms-resilience"],
+              ["Resilience patterns beyond retry", "I can add a bulkhead, apply backpressure and shed load, and explain graceful degradation.", 1, "ms-bulkhead", "Resilience with Polly"],
+              ["Saga pattern", "I can design a saga with compensating actions for a multi-step flow.", 2, "ms-saga", "Outbox pattern"],
+              ["API gateway and BFF", "I can put a gateway in front of services and explain the BFF pattern.", 2, "ms-gateway", "Monolith vs microservices"],
+              ["Sidecar and service mesh", "I can explain the sidecar pattern and what a service mesh or Dapr takes over from application code, such as service discovery, retries and mTLS.", 3, "ms-sidecar", "Monolith vs microservices"]
+            ], [["Start here: microservices.io patterns", "https://microservices.io/patterns/"], ["Polly documentation", "https://www.pollydocs.org"], ["YARP documentation", "https://microsoft.github.io/reverse-proxy/"], ["Bulkhead pattern (Microsoft)", "https://learn.microsoft.com/azure/architecture/patterns/bulkhead"], ["Sidecar pattern (Microsoft)", "https://learn.microsoft.com/azure/architecture/patterns/sidecar"], ["Dapr documentation", "https://docs.dapr.io"]]],
+            ["System design practice", "How to design and critique a system under real constraints.", [
+              ["Designing classic systems", "I can design a URL shortener and a rate limiter on a whiteboard.", 1, "sd-classic", "Capacity estimation"],
+              ["Critiquing a real system", "I can critique an existing system given its real constraints (legacy, team size, budget).", 1, "sd-critique", "Designing classic systems"]
+            ], [["Start here: System Design Primer", "https://github.com/donnemartin/system-design-primer"], ["ByteByteGo", "https://bytebytego.com"]]]
+          ], p: "Project: split one module out of the flagship with the Strangler Fig approach, connect it through RabbitMQ or Kafka with an outbox, and document what broke along the way. Run a game day: kill the broker and see what survives.", r: "Ready for the next phase if: you can explain what happens to your system when a service, a broker or a database goes down, and which of your design choices make it recover."
+        },
+
+        {
+          t: "Architect and Career Skills", s: [
+            ["Architecture decisions and communication", "How to make a decision, defend it, and bring people along.", [
+              ["Quality attributes and trade-offs", "I can name the quality attributes at play and explain what I give up for each choice.", 1, "archcom-quality"],
+              ["Quality scenarios and the ISO 25010 model", "I can turn a vague quality goal into a scenario with a stimulus, a response and a measurable target, using the ISO 25010 characteristics as a checklist.", 1, "archcom-scenarios", "Quality attributes and trade-offs"],
+              ["Design docs and RFCs", "I can write a design doc that a peer can review and act on.", 1, "archcom-docs", "Architecture Decision Records"],
+              ["Explaining to non-technical people", "I can explain a technical decision in terms of cost and risk.", 1, "archcom-nontech"],
+              ["Design review facilitation", "I can run a design review and capture decisions.", 2, "archcom-review", "Design docs and RFCs"],
+              ["Technology selection and build vs buy", "I can compare two technologies against criteria and write a build-vs-buy decision with total cost of ownership and vendor risk.", 1, "archcom-buy", "Architecture Decision Records; Cost estimation"],
+              ["Security and privacy in architecture", "I can apply least privilege, defense in depth and privacy by design to a system, run a STRIDE threat model and say what GDPR requires of it.", 1, "archcom-security", "Cryptography basics; Authorization policies"],
+              ["Architecture evaluation", "I can run a lightweight ATAM-style review and define a fitness function that guards one quality attribute.", 2, "archcom-eval", "Quality attributes and trade-offs"],
+              ["Architecture katas", "I can design a system for a kata prompt in one hour, present it and defend its trade-offs.", 2, "archcom-kata", "Designing classic systems; Quality attributes and trade-offs"]
+            ], [["Start here: Software Architecture Guide (Martin Fowler)", "https://martinfowler.com/architecture/"], ["Design Docs at Google", "https://www.industrialempathy.com/posts/design-docs-at-google/"], ["AWS Well-Architected Framework", "https://aws.amazon.com/architecture/well-architected/"], ["Technology Radar (Thoughtworks)", "https://www.thoughtworks.com/radar"], ["Architecture katas", "https://nealford.com/katas/"], ["GDPR overview", "https://gdpr.eu/what-is-gdpr/"], ["ISO/IEC 25010 quality model (arc42)", "https://quality.arc42.org/standards/iso-25010"]]],
+            ["Teams and organizations", "How team structure shapes system architecture.", [
+              ["Conway's Law", "I can explain Conway's Law and give an example from a real organization.", 1, "team-conway"],
+              ["Team topologies", "I can name the four team types and when to use each.", 3, "team-topologies", "Conway's Law"]
+            ], [["Start here: Team Topologies", "https://teamtopologies.com"]]],
+            ["Professional practice", "The responsibilities that come with building software other people depend on.", [
+              ["Professional ethics and licensing", "I can apply the software engineering code of ethics to a realistic dilemma and explain the main open-source license obligations.", 2, "prof-ethics", "Dependencies and licenses"]
+            ], [["Start here: Software Engineering Code of Ethics (ACM)", "https://ethics.acm.org/code-of-ethics/software-engineering-code/"], ["ACM Code of Ethics", "https://www.acm.org/code-of-ethics"]]],
+            ["Career growth", "How to present the work you have done and pass the next interview loop.", [
+              ["Portfolio from the flagship", "I can present the flagship as a coherent architecture story.", 1, "career-portfolio"],
+              ["Interview preparation", "I can pass a coding and a system design interview loop.", 1, "career-interview", "Designing classic systems; Sorting and searching"]
+            ], [["Start here: Good First Issue", "https://goodfirstissue.dev"], ["First Timers Only", "https://www.firsttimersonly.com"], ["NeetCode roadmap (optional algorithm practice)", "https://neetcode.io"]]]
+          ], p: "Practice: write an architecture document with C4 diagrams and three ADRs for the flagship, then ask a peer to critique it. Present the design to a non-technical person and write down their questions.", r: "You have finished this roadmap if: a stranger can read your architecture document, understand why the system looks the way it does, and you can defend every major decision in it."
+        }
+      ];
+
+      var KEY = "roadmap-v11";
+      var st = { c: {}, f: 3, th: null };
+      try {
+        var r = JSON.parse(localStorage.getItem(KEY) || "{}");
+        if (r && typeof r === "object") {
+          st.c = (r.c && typeof r.c === "object" && !Array.isArray(r.c)) ? r.c : {};
+          st.f = (r.f === 1 || r.f === 2 || r.f === 3) ? r.f : 3;
+          st.th = r.th || null;
+        }
+      } catch (e) { }
+      function save() { try { localStorage.setItem(KEY, JSON.stringify(st)) } catch (e) { } }
+      function el(tag, cls) { var e = document.createElement(tag); if (cls) e.className = cls; return e }
+      var app = document.getElementById("app");
+      var toc = document.getElementById("toc");
+      var labels = ["", "Core", "Important", "Bonus"];
+      var items = [];
+      var phases = [];
+      var secs = [];
+
+      function labeled(cls, text) {
+        var box = el("div", cls);
+        var idx = text.indexOf(":");
+        var b = el("b"); b.textContent = text.slice(0, idx + 1) + " ";
+        box.appendChild(b);
+        box.appendChild(document.createTextNode(text.slice(idx + 1).trim()));
+        return box;
+      }
+
+      D.forEach(function (ph, pi) {
+        var det = el("details", "phase");
+        det.id = "p" + pi;
+        det.open = pi === 0;
+        var sm = el("summary");
+        var n = el("span", "n"); n.textContent = String(pi);
+        var t = el("span"); t.textContent = ph.t;
+        var c = el("span", "c");
+        sm.appendChild(n); sm.appendChild(t); sm.appendChild(c);
+        det.appendChild(sm);
+        var body = el("div", "pbody");
+        ph.s.forEach(function (sc, si) {
+          var sd = el("details", "sec");
+          sd.open = true;
+          var ss = el("summary");
+          var sn = el("span", "n"); sn.textContent = pi + "." + (si + 1);
+          var stt = el("span"); stt.textContent = sc[0];
+          var sc2 = el("span", "c");
+          ss.appendChild(sn); ss.appendChild(stt); ss.appendChild(sc2);
+          sd.appendChild(ss);
+          var g = el("p", "goal");
+          var gb = el("b");
+          gb.textContent = "What this gives you: ";
+          g.appendChild(gb);
+          g.appendChild(document.createTextNode(sc[1]));
+          sd.appendChild(g);
+          var ul = el("ul");
+          var secItems = [];
+          sc[2].forEach(function (sub) {
+            var subTitle = sub[0], subMastery = sub[1], subP = sub[2], subId = sub[3], subNeeds = sub[4];
+            var li = el("li");
+            li.setAttribute("data-p", subP);
+            var lb = el("label");
+            var cbId = "cb-" + subId;
+            var cb = el("input"); cb.type = "checkbox"; cb.id = cbId;
+            lb.setAttribute("for", cbId);
+            var tx = el("span", "t");
+            var txTitle = el("span", "t-title"); txTitle.textContent = subTitle;
+            var sm2 = el("span", "sub-mastery"); sm2.textContent = subMastery;
+            tx.appendChild(txTitle);
+            tx.appendChild(sm2);
+            if (subNeeds) {
+              var nd = el("span", "needs"); nd.textContent = "Needs: " + subNeeds;
+              tx.appendChild(nd);
+            }
+            lb.appendChild(cb); lb.appendChild(tx);
+            var bd = el("span", "b b" + subP); bd.textContent = labels[subP];
+            li.appendChild(lb); li.appendChild(bd);
+            ul.appendChild(li);
+            var o = { li: li, cb: cb, p: subP, id: subId, ph: pi };
+            if (st.c[subId]) { cb.checked = true; li.classList.add("done") }
+            cb.addEventListener("change", function () {
+              li.classList.toggle("done", cb.checked);
+              if (cb.checked) st.c[subId] = 1; else delete st.c[subId];
+              save(); update();
+            });
+            items.push(o);
+            secItems.push(o);
+          });
+          sd.appendChild(ul);
+          var rs = el("div", "res");
+          var rh = el("h4"); rh.textContent = "Resources";
+          rs.appendChild(rh);
+          var ch = el("div", "chips");
+          sc[3].forEach(function (r) {
+            var x;
+            if (r[1]) {
+              x = el("a", "chip");
+              x.href = r[1];
+              x.target = "_blank";
+              x.rel = "noopener noreferrer";
+            } else {
+              x = el("span", "chip");
+            }
+            x.textContent = r[0];
+            ch.appendChild(x);
+          });
+          rs.appendChild(ch);
+          sd.appendChild(rs);
+          body.appendChild(sd);
+          secs.push({ items: secItems, c: sc2, el: sd });
+        });
+        body.appendChild(labeled("proj", ph.p));
+        body.appendChild(labeled("ready", ph.r));
+        det.appendChild(body);
+        app.appendChild(det);
+
+        var a = el("a");
+        a.href = "#p" + pi;
+        var an = el("span", "n"); an.textContent = String(pi);
+        var at = el("span"); at.textContent = ph.t;
+        var ap = el("span", "p");
+        a.appendChild(an); a.appendChild(at); a.appendChild(ap);
+        a.addEventListener("click", function () { det.open = true });
+        toc.appendChild(a);
+        phases.push({ c: c, p: ap, idx: pi, el: det, link: a });
+      });
+
+      var fill = document.getElementById("fill");
+      var pt = document.getElementById("pt");
+      var track = document.getElementById("track");
+      function pct(d, t) { return t ? Math.round(d * 100 / t) : 0 }
+      function update() {
+        var vis = items.filter(function (x) { return x.p <= st.f });
+        var done = vis.filter(function (x) { return x.cb.checked }).length;
+        var percent = pct(done, vis.length);
+        fill.style.width = percent + "%";
+        pt.textContent = done + " of " + vis.length + " skills (" + percent + "%)";
+        track.setAttribute("aria-valuenow", String(percent));
+        track.setAttribute("aria-valuetext", done + " of " + vis.length + " skills, " + percent + " percent");
+        phases.forEach(function (ph) {
+          var v = vis.filter(function (x) { return x.ph === ph.idx });
+          var dn = v.filter(function (x) { return x.cb.checked }).length;
+          var empty = v.length === 0;
+          ph.el.style.display = empty ? "none" : "";
+          ph.link.style.display = empty ? "none" : "";
+          if (!empty) {
+            ph.c.textContent = dn + "/" + v.length;
+            ph.p.textContent = pct(dn, v.length) + "%";
+          }
+        });
+        secs.forEach(function (s) {
+          var v = s.items.filter(function (x) { return x.p <= st.f });
+          var dn = v.filter(function (x) { return x.cb.checked }).length;
+          var empty = v.length === 0;
+          s.el.style.display = empty ? "none" : "";
+          if (!empty) {
+            s.c.textContent = dn + "/" + v.length;
+          }
+        });
+      }
+
+      var fbtns = [].slice.call(document.querySelectorAll("#filters button[data-f]"));
+      function applyFilter() {
+        document.body.setAttribute("data-filter", String(st.f));
+        fbtns.forEach(function (b) {
+          var active = parseInt(b.getAttribute("data-f"), 10) === st.f;
+          b.classList.toggle("on", active);
+          b.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        update();
+      }
+      fbtns.forEach(function (b) {
+        b.addEventListener("click", function () {
+          st.f = parseInt(b.getAttribute("data-f"), 10);
+          save(); applyFilter();
+        });
+      });
+
+      var tb = document.getElementById("theme");
+      var root = document.documentElement;
+      function themeLabel() {
+        var dark = root.getAttribute("data-theme") === "dark";
+        tb.textContent = dark ? "\u2600 Light mode" : "\u263E Dark mode";
+        tb.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      }
+      tb.addEventListener("click", function () {
+        var n = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", n);
+        st.th = n;
+        save(); themeLabel();
+      });
+
+      themeLabel();
+      applyFilter();
+    })();
+  </script>
+</body>
+
+</html>
