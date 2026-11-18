@@ -55,7 +55,7 @@
 
 ## چطور استفاده کنم؟
 
-1. آدرس javdanfar.github.io/Software-Architect-Roadmap در مرورگرت باز کن.
+1. آدرس [Software Architect Roadmap](https://javdanfar.github.io/Software-Architect-Roadmap/ "Open the live roadmap") در مرورگرت باز کن.
 2. از فاز ۰ شروع کن و به ترتیب جلو برو.
 3. هر مهارت را فقط وقتی تیک بزن که بتوانی جمله‌ی «معیار تسلط»اش را انجام بدهی.
 4. اگر نقشه سنگین به نظر می‌رسد، از دکمه‌ی **Core only** استفاده کن.
